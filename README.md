@@ -22,6 +22,13 @@ You must obtain your own license file (license.txt) from [freesurfer](https://su
 docker cp {host-pwd}license.txt neurodavid_session:/opt/freesurfer-6.0.0/foo.txt
 ```
 
+To build the image yourself (example for Windows Powershell)
+
+```
+git clone https://github.com/bowenwen/neurodavid.git
+Get-Content Dockerfile | docker build --tag neurodavid_test -
+```
+
 ### Additional Options
 
 If you wish to customize setting at the container level, you may want to customize the docker-compose file included in this repository.
@@ -32,7 +39,7 @@ You can generate your own password when you run your own container, follow the i
 
 #### Other versions
 
-For more versions of this docker image build, check out this repo on DockerHub: [bowenwen/neurodavid](https://cloud.docker.com/repository/docker/bowenwen/neurodavid)
+For more versions of this docker image build, check out this repo on DockerHub: [bowenwen/neurodavid](https://hub.docker.com/r/bowenwen/neurodavid)
 
 ## License
 
@@ -42,7 +49,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This customized docker image was generated using [kaczmarj/neurodocker](https://github.com/kaczmarj/neurodocker/tree/master/examples) with some personalization. The initial commit of the Dockerfile was generated using the following command:
 ```
-docker run --rm kaczmarj/neurodocker:0.4.3 generate docker --base=neurodebian:stretch --pkg-manager=apt --ndfreeze date=20181201 --freesurfer version=6.0.0 method=binaries --fsl version=5.0.11 method=binaries --matlabmcr version=2018b method=binaries --dcm2niix version=latest method=source --ants version=2.3.1 method=binaries --spm12 version=r7219 method=binaries --miniconda create_env=neuro conda_install='python=3.6 numpy pandas traits matplotlib scikit-learn scikit-image seaborn nbformat nb_conda vtk' pip_install='nipype' --miniconda use_env=neuro conda_install='pytest jupyter jupyterlab jupyter_contrib_nbextensions' > Dockerfile
+docker run --rm kaczmarj/neurodocker:0.4.3 generate docker --base=neurodebian:stretch --pkg-manager=apt --ndfreeze date=20181201 --freesurfer version=6.0.0 method=binaries --fsl version=5.0.11 method=binaries --dcm2niix version=latest method=source --ants version=2.3.1 method=binaries --spm12 version=r7219 method=binaries  --matlabmcr version=2018a method=binaries --miniconda create_env=neuro conda_install='python=3.6 numpy pandas traits matplotlib scikit-learn scikit-image seaborn nbformat nb_conda vtk' pip_install='nipype' --miniconda use_env=neuro conda_install='pytest jupyter jupyterlab jupyter_contrib_nbextensions' > Dockerfile
 
 ```
 
