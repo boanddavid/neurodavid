@@ -1,0 +1,13 @@
+version:  '3'
+
+services:
+    neurodavid_container:
+        image: bowenwen/neurodavid:latest
+        restart: always
+        volumes:
+            - E:/David/:/home/neuro/David
+        container_name:   neurodavid_session
+        command: jupyter notebook --allow-root --ip=0.0.0.0 --no-browser --notebook-dir=/home/neuro
+        ports:
+            - 8888:8888
+            
