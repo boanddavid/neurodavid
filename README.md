@@ -30,6 +30,10 @@ If you wish to customize setting at the container level, you may want to customi
 
 You can generate your own password when you run your own container, follow the instruction [to prepare a hashed password](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password)
 
+#### Other versions
+
+For more versions of this docker image build, check out this repo on DockerHub: [bowenwen/neurodavid](https://cloud.docker.com/repository/docker/bowenwen/neurodavid)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
