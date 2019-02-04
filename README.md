@@ -25,12 +25,18 @@ cd {licensefile_pwd}
 docker cp license.txt neurodavid_session:/opt/freesurfer-6.0.0/license.txt
 ```
 
-To build the image yourself (example for Windows Powershell)
+To build the image yourself
 
 ```
 git clone https://github.com/bowenwen/neurodavid.git
 cd neurodavid
+# opt-1. building with Windows Powershell
 Get-Content Dockerfile | docker build --tag neurodavid_test -
+# opt-2. otherwise
+docker build --tag neurodavid_test .
+# opt-3. adding cache to make build faster
+docker build --tag neurodavid_test --cache-from bowenwen/neurodavid .
+Get-Content Dockerfile | docker build - --tag neurodavid_test --cache-from bowenwen/neurodavid
 ```
 
 ### Additional Options
@@ -53,12 +59,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This customized docker image was generated using [kaczmarj/neurodocker](https://github.com/kaczmarj/neurodocker/tree/master/examples) with some personalization. The initial commit of the Dockerfile was generated using the following command:
 ```
-docker run --rm kaczmarj/neurodocker:0.4.3 generate docker --base=neurodebian:stretch --pkg-manager=apt --ndfreeze date=20181201 --freesurfer version=6.0.0 method=binaries --fsl version=5.0.11 method=binaries --dcm2niix version=latest method=source --ants version=2.3.1 method=binaries --spm12 version=r7219 method=binaries  --matlabmcr version=2018a method=binaries --user neuro --miniconda create_env=neuro conda_install='python=3.6 pytest jupyter jupyterlab traits pandas matplotlib scikit-learn scikit-image seaborn nbformat nb_conda vtk' pip_install='nipype' --miniconda use_env=neuro conda_install='jupyter_contrib_nbextensions' activate=true --run-bash 'source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable spellchecker/main' --user=root --workdir /home/neuro --cmd jupyter-notebook > Dockerfile
+docker run --rm kaczmarj/neurodocker:0.4.3 generate docker --base=neurodebian:stretch --pkg-manager=apt --ndfreeze date=20181201 --freesurfer version=6.0.0 method=binaries --fsl version=5.0.11 method=binaries --dcm2niix version=latest method=source --ants version=2.3.1 method=binaries --spm12 version=r7219 method=binaries  --matlabmcr version=2018a method=binaries --user neuro --miniconda create_env=neuro conda_install='python=3.6 pytest jupyter jupyterlab traits pandas matplotlib scikit-learn scikit-image seaborn nbformat nb_conda vtk' pip_install='nipype' --user=root --run 'echo \"deb http://http.debian.net/debian/ stretch main contrib non-free\" > /etc/apt/sources.list' --install ttf-mscorefonts-installer --user neuro --miniconda use_env=neuro conda_install='jupyter_contrib_nbextensions' pip_install='yapf jupyterlab-git' activate=true --run-bash 'source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable spellchecker/main && jupyter serverextension enable --py jupyterlab_git' --user=root --workdir /home/neuro --cmd jupyter-notebook > Dockerfile
 ```
 
 ### Third-party Software Licenses
 
-FreeSurfer is developed by the [Martinos Center for Biomedical Imaging at Massachusetts General Hospital] (https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense) 
+FreeSurfer is developed by the [Martinos Center for Biomedical Imaging at Massachusetts General Hospital](https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense) 
 
 FSL is developed by the [University of Oxford](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence).
 
