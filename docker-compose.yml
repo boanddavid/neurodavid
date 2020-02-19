@@ -7,7 +7,7 @@ services:
         volumes:
             - E:/David/:/home/neuro/david
             - E:/David/.jupyter/:/root/.jupyter
-            - E:/David/_freesurfer_license/license.txt:/opt/freesurfer/license.txt
+            - E:/David/_freesurfer_license/license.txt:/opt/freesurfer-dev-20200218/license.txt
         container_name:   neurodavid_session
         command: jupyter notebook --allow-root --ip=0.0.0.0 --no-browser --notebook-dir=/home/neuro --NotebookApp.password='sha1:15900ad3c2d8:8664166f0a5ef87454cee7f1d07d052bddb80358'
         ports:
