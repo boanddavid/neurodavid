@@ -267,7 +267,7 @@ RUN conda install -y -q --name neuro \
     && sync \
     && sed -i '$isource activate neuro' $ND_ENTRYPOINT
 
-RUN bash -c 'source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable spellchecker/main && jupyter labextension install @jupyterlab/git && jupyter serverextension enable && jupyter labextension install @jupyter-widgets/jupyterlab-manager && jupyter labextension install jupyter-matplotlib && jupyter serverextension enable --sys-prefix jupyterlab_latex && jupyter labextension install @jupyterlab/latex && jupyter labextension install jupyterlab_bokeh'
+RUN bash -c 'source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable spellchecker/main'
 
 RUN bash -c "source activate neuro \
     &&   pip install --no-cache-dir  \
@@ -412,7 +412,7 @@ RUN echo '{ \
     \n    ], \
     \n    [ \
     \n      "run_bash", \
-    \n      "source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable spellchecker/main && jupyter labextension install @jupyterlab/git && jupyter serverextension enable && jupyter labextension install @jupyter-widgets/jupyterlab-manager && jupyter labextension install jupyter-matplotlib && jupyter serverextension enable --sys-prefix jupyterlab_latex && jupyter labextension install @jupyterlab/latex && jupyter labextension install jupyterlab_bokeh" \
+    \n      "source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable spellchecker/main" \
     \n    ], \
     \n    [ \
     \n      "miniconda", \
